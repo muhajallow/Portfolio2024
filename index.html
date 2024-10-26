@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammed Jallow - Visionary Software Engineer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #0a0a0a;
+            --secondary-color: #141414;
+            --accent-color: #61dafb;
+            --text-color: #ffffff;
+            --text-color-muted: #a0a0a0;
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--primary-color);
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: all var(--transition-speed) ease;
+        }
+
+        a:hover {
+            color: #ffffff;
+        }
+
+        header {
+            background-color: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all var(--transition-speed) ease;
+        }
+
+        header.scrolled {
+            padding: 0.5rem 1rem;
+            background-color: rgba(10, 10, 10, 0.95);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            font-weight: 600;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width var(--transition-speed) ease;
+        }
+
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 1rem 2rem;
+        }
+
+        section {
+            margin-bottom: 6rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--accent-color), #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: calc(100vh - 6rem);
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0 0 50px rgba(97, 218, 251, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .experience .job {
+            background-color: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            transition: all var(--transition-speed) ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience .job::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(97, 218, 251, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .experience .job:hover::before {
+            transform: translateX(0);
+        }
+
+        .experience .job h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience .job .company {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .experience .job ul {
+            list-style-type: none;
+        }
+
+        .experience .job ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .experience .job ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        .skill-grid,
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card,
+        .project-card {
+            background-color: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all var(--transition-speed) ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before,
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(97, 218, 251, 0.1), transparent);
+            transform: translateY(100%);
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .skill-card:hover::before,
+        .project-card:hover::before {
+            transform: translateY(0);
+        }
+
+        .skill-card:hover,
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(97, 218, 251, 0.2);
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background-color: var(--secondary-color);
+            border: none;
+            border-radius: 5px;
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--accent-color);
+        }
+
+        .contact-form button {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #ffffff;
+            color: var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--text-color-muted);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero-image {
+                margin-bottom: 2rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">MJ</div>
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Muhammed Jallow</h1>
+                <p>Visionary Software Engineer at Google</p>
+            </div>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/400" alt="Muhammed Jallow" id="profile-picture">
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2>About Me</h2>
+            <p>As a passionate Software Engineer at Google, I'm dedicated to pushing the boundaries of what's possible in technology. With a strong background in full-stack development and a keen interest in AI and machine learning, I create innovative solutions that impact millions of users worldwide. My goal is to revolutionize the digital landscape, one line of code at a time.</p>
+        </section>
+
+        <section id="experience" class="experience">
+            <h2>Experience</h2>
+            <div class="job">
+                <h3>Senior Software Engineer</h3>
+                <p class="company">Google | 2019 - Present</p>
+                <ul>
+                    <li>Spearheaded the development of critical components for Google Search, enhancing user experience for millions globally</li>
+                    <li>Led machine learning initiatives to significantly improve search result relevance and accuracy</li>
+                    <li>Architected and optimized backend systems, achieving a 40% improvement in performance and scalability</li>
+                    <li>Mentored junior engineers and led cross-functional teams, fostering innovation and driving project success</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills" class="skills">
+            <h2>Skills</h2>
+            <div class="skill-grid">
+                <div class="skill-card">Python</div>
+                <div class="skill-card">JavaScript</div>
+                <div class="skill-card">React</div>
+                <div class="skill-card">Node.js</div>
+                <div class="skill-card">Go</div>
+                <div class="skill-card">Machine Learning</div>
+                <div class="skill-card">Cloud Computing</div>
+                <div class="skill-card">Distributed Systems</div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>AI-Powered Search Enhancement</h3>
+                    <p>Revolutionized search algorithms using cutting-edge machine learning models, dramatically improving result relevance and user satisfaction</p>
+                </div>
+                <div class="project-card">
+                    <h3>Quantum-Inspired Backend System</h3>
+                    <p>Pioneered a groundbreaking scalable backend system capable of handling billions of requests per second, inspired by quantum computing principles</p>
+                </div>
+                <div class="project-card">
+                    <h3>Open Source AI Framework</h3>
+                    <p>Created and maintained a revolutionary open-source AI framework, empowering developers worldwide to build next-generation intelligent applications</p>
+                </div>
+                <div class="project-card">
+                    <h3>Futuristic Developer Toolkit</h3>
+                    <p>Engineered a suite of innovative internal tools that boosted developer productivity by 200%, setting new industry standards for efficient coding practices</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Get In Touch</h2>
+            <p>Ready to revolutionize the tech world together? Let's connect and explore the possibilities.</p>
+            <form id="contact-form" class="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Muhammed Jallow. Innovating the future, one line of code at a time.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.querySelector('header');
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav ul li a');
+
+            
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Form submission
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const formData = new FormData(contactForm);
+                    console.log('Form submitted with data:', Object.fromEntries(formData));
+                    alert('Thank you for your message! I\'ll get back to you soon.');
+                    contactForm.reset();
+                });
+            }
+
+            // Scroll animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Header scroll effect and active nav link update
+            window.addEventListener('scroll', () => {
+                const scrollPosition = window.scrollY;
+
+                if (scrollPosition > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollPosition >= sectionTop - sectionHeight / 3) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').slice(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Parallax effect for hero image
+            const heroImage = document.querySelector('.hero-image img');
+            window.addEventListener('scroll', () => {
+                const scrollPosition = window.scrollY;
+                heroImage.style.transform = `translateY(${scrollPosition * 0.3}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
